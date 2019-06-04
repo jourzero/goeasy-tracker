@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="utf-8" />
+        <title>Go Easy!</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="Go Easy Tracker.  Works offline." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="styles/main.css" />
+        <link rel="icon" sizes="192x192" href="images/touch/Airhorner_192.png" />
+        <link rel="apple-touch-icon" href="images/touch/Airhorner_192.png" />
+        <!--
+        <link rel="canonical" href="http://localhost:4242/" />
+        <link rel="manifest" href="manifest.json" />
+    <meta name='mobile-web-app-capable' content='yes'>
+    <meta name='apple-mobile-web-app-capable' content='yes'>
+    <meta name='application-name' content='Air Horner'>
+    <meta name='apple-mobile-web-app-status-bar-style' content='black'>
+    <meta name='apple-mobile-web-app-title' content='Air Horner'>
+    <meta name='msapplication-TileImage' content='images/touch/Airhorner_144.png'>
+    <meta name='msapplication-TileColor' content='#2196F3'>
+    <meta name='theme-color' content='#2196F3'>
+    <meta property='og:title' content='Air Horn'>
+    <meta property='og:type' content='website'>
+    <meta property='og:image' content='images/touch/Airhorner_192.png'>
+    <meta property='og:url' content='http://localhost:4242/'>
+    <meta property='og:description' content='The best and easiest Air Horn web app there is. No install just use it right away in your browser!'>
+    <script src='scripts/pwacompat.min.js' async></script>
+    -->
+        <link rel="stylesheet" href="styles/pure-release-1.0.0/pure-min.css" />
+        <link rel="stylesheet" href="styles/pure-release-1.0.0/grids-responsive-min.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="scripts/jquery-3.4.1.min.js"></script>
+        <script src="scripts/goeasy.js"></script>
+        <script>
+            var weeklyUnits = 14;
+            var unitsLeft = restoreUnits();
+        </script>
+    </head>
+    <body>
+        <form class="pure-form pure-form-stacked">
+            <fieldset>
+                <div class="pure-g">
+                    <div class="pure-u-1 pure-u-md-1-3">
+                        <label for="Init"> &nbsp; </label>
+                        <button
+                            type="submit"
+                            class="pure-button pure-button-primary"
+                            onclick="resetUnits()"
+                        >
+                            Reset
+                        </button>
+                    </div>
+
+                    <div class="pure-u-1 pure-u-md-1-3">
+                        <label for="UnitsLeft">Units Left</label>
+                        <input type="text" placeholder="Units Left (Click Reset)" id="unitsLeft" />
+                    </div>
+
+                    <div class="pure-u-1 pure-u-md-1-3">
+                        <label for="Brewsky">Brewsky (max: 6 pints / week)</label>
+
+                        <button
+                            type="submit"
+                            class="pure-button pure-button-primary"
+                            onclick="takeUnits(1.75)"
+                        >
+                            -375ml
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="pure-button pure-button-primary"
+                            onclick="takeUnits(2.333)"
+                        >
+                            -500ml
+                        </button>
+                    </div>
+                    <div class="pure-u-1 pure-u-md-1-3">
+                    </div>
+                    <div class="pure-u-1 pure-u-md-1-3">
+                        <label for="Init">Source:</label>
+                        <button class="button-xsmall pure-button" onclick="window.open('https://www.bbc.com/news/uk-35255384')">BBC News</button> 
+                    </div>
+                    <div class="pure-u-1 pure-u-md-1-3">
+                        <label for="Brewsky">Vino (max: 7 / week)</label>
+
+                        <button
+                            type="submit"
+                            class="pure-button pure-button-primary"
+                            onclick="takeUnits(2)"
+                        >
+                            Glass
+                        </button>
+                    </div>
+            </fieldset>
+        </form>
+
+        <script>
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker
+                    .register("sw.js")
+                    .then(function(registration) {
+                        console.log("Service Worker Registered");
+                    });
+
+                navigator.serviceWorker.ready.then(function(registration) {
+                    console.log("Service Worker Ready");
+                    restoreUnits();
+                });
+            }
+        </script>
+    </body>
+</html>
