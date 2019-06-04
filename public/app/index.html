@@ -7,37 +7,17 @@
         <meta name="description" content="Go Easy Tracker.  Works offline." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="styles/main.css" />
-        <link rel="icon" sizes="192x192" href="images/touch/Airhorner_192.png" />
-        <link rel="apple-touch-icon" href="images/touch/Airhorner_192.png" />
-        <!--
-        <link rel="canonical" href="http://localhost:4242/" />
-        <link rel="manifest" href="manifest.json" />
-    <meta name='mobile-web-app-capable' content='yes'>
-    <meta name='apple-mobile-web-app-capable' content='yes'>
-    <meta name='application-name' content='Air Horner'>
-    <meta name='apple-mobile-web-app-status-bar-style' content='black'>
-    <meta name='apple-mobile-web-app-title' content='Air Horner'>
-    <meta name='msapplication-TileImage' content='images/touch/Airhorner_144.png'>
-    <meta name='msapplication-TileColor' content='#2196F3'>
-    <meta name='theme-color' content='#2196F3'>
-    <meta property='og:title' content='Air Horn'>
-    <meta property='og:type' content='website'>
-    <meta property='og:image' content='images/touch/Airhorner_192.png'>
-    <meta property='og:url' content='http://localhost:4242/'>
-    <meta property='og:description' content='The best and easiest Air Horn web app there is. No install just use it right away in your browser!'>
-    <script src='scripts/pwacompat.min.js' async></script>
-        <link rel="stylesheet" href="styles/pure-release-1.0.0/grids-responsive-min.css" />
-    -->
         <link rel="stylesheet" href="styles/pure-release-1.0.0/pure-min.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <script src="scripts/jquery-3.4.1.min.js"></script>
         <script src="scripts/goeasy.js"></script>
+        <script src="scripts/jquery-3.4.1.min.js"></script>
         <script>
             var weeklyUnits = 14;
             var unitsLeft = restoreUnits();
         </script>
     </head>
     <body>
+        <h3 class="header">Go Easy!</h3>
         <div id="container">
             <style scoped>
                 .button-secondary {
@@ -58,66 +38,99 @@
                     background: yellow;
                 }
             </style>
+            <div class="pure-g">
+                <div class="pure-u-1-3">&nbsp;</div>
+                <div class="pure-u-1-3">
+                    <label for="Reset">On Monday</label>
+                </div>
+                <div class="pure-u-1-3">
+                    <button
+                        type="submit"
+                        class="button-xsmall pure-button button-secondary"
+                        onclick="resetUnits()"
+                    >
+                        Reset
+                    </button>
+                </div>
 
-            <form class="pure-form pure-form-aligned">
-                <fieldset>
-                    <div class="pure-control-group">
-                        <label for="Reset">On Monday:</label>
-                        <button
-                            type="submit"
-                            class="button-xsmall pure-button button-secondary"
-                            onclick="resetUnits()"
-                        >
-                            Reset
-                        </button>
-                    </div>
-                    <div class="pure-control-group">&nbsp;</div>
-                    <div class="pure-control-group">&nbsp;</div>
-                    <div class="pure-control-group">
-                        <label for="Vino">Vino (7):</label>
-                        <button
-                            type="submit"
-                            class="button-wine pure-button"
-                            onclick="takeUnits(2)"
-                        >
-                            Glass
-                        </button>
-                    </div>
-                    <div class="pure-control-group">&nbsp;</div>
-                    <div class="pure-control-group">
-                        <label for="Bottles">Brewsky (8):</label>
-                        <button
-                            type="submit"
-                            class="pure-button button-beer"
-                            onclick="takeUnits(1.75)"
-                        >
-                            -375ml
-                        </button>
-                    </div>
-                    <div class="pure-control-group">&nbsp;</div>
-                    <div class="pure-control-group">
-                        <label for="Pints">Brewsky (6):</label>
-                        <button
-                            type="submit"
-                            class="pure-button button-beer"
-                            onclick="takeUnits(2.333)"
-                        >
-                            -500ml
-                        </button>
-                    </div>
-                    <div class="pure-control-group">&nbsp;</div>
-                    <div class="pure-control-group">
-                        <label for="UnitsLeft">Units Left</label>
-                        <input
-                            type="text"
-                            class="pure-input-rounded"
-                            placeholder="Units Left (click Reset)"
-                            id="unitsLeft"
-                            readonly
-                        />
-                    </div>
-                </fieldset>
-            </form>
+                <div class="pure-u-1-1">&nbsp;</div>
+                <div class="pure-u-1-1">&nbsp;</div>
+
+                <div class="pure-u-1-3">&nbsp;</div>
+                <div class="pure-u-1-3"><label for="Shot">Scotch, Spririts</label></div>
+                <div class="pure-u-1-3">
+                    <button type="submit" class="button-wine pure-button" onclick="takeUnits(1)">
+                        Single 40%</button
+                    >(25ml/1u)
+                </div>
+
+                <div class="pure-u-1-1">&nbsp;</div>
+
+                <div class="pure-u-1-3">&nbsp;</div>
+                <div class="pure-u-1-3"><label for="Wine">Wine Glass</label></div>
+                <div class="pure-u-1-3">
+                    <button type="submit" class="button-wine pure-button" onclick="takeUnits(1.5)">
+                        Small 12%</button
+                    >(125ml/1.5u)
+                </div>
+
+                <div class="pure-u-1-1">&nbsp;</div>
+
+                <div class="pure-u-2-3">&nbsp;</div>
+                <div class="pure-u-1-3">
+                    <button type="submit" class="button-wine pure-button" onclick="takeUnits(2.1)">
+                        Normal 12%</button
+                    >(175ml/2.1u)
+                </div>
+
+                <div class="pure-u-1-1">&nbsp;</div>
+
+                <div class="pure-u-1-3">&nbsp;</div>
+                <div class="pure-u-1-3">
+                    <label for="Bottles">Brewsky</label>
+                </div>
+                <div class="pure-u-1-3">
+                    <button type="submit" class="pure-button button-beer" onclick="takeUnits(1.7)">
+                        Bottle 5%
+                    </button>
+                    (330ml/1.7u)
+                </div>
+
+                <div class="pure-u-1-1">&nbsp;</div>
+                <div class="pure-u-2-3">&nbsp;</div>
+                <div class="pure-u-1-3">
+                    <button type="submit" class="pure-button button-beer" onclick="takeUnits(2)">
+                        Pint 3.6%
+                    </button>
+                    (500ml,2u)
+                </div>
+
+                <div class="pure-u-1-1">&nbsp;</div>
+                <div class="pure-u-2-3">&nbsp;</div>
+                <div class="pure-u-1-3">
+                    <button type="submit" class="pure-button button-beer" onclick="takeUnits(3)">
+                        Pint 5.2%
+                    </button>
+                    (500ml,3u)
+                </div>
+
+                <div class="pure-u-1-1">&nbsp;</div>
+                <div class="pure-u-1-1">&nbsp;</div>
+
+                <div class="pure-u-1-3">&nbsp;</div>
+                <div class="pure-u-1-3">
+                    <label for="UnitsLeft">Units Left</label>
+                </div>
+                <div class="pure-u-1-3">
+                    <input
+                        type="text"
+                        class="pure-input-rounded"
+                        placeholder="Units Left (click Reset)"
+                        id="unitsLeft"
+                        readonly
+                    />
+                </div>
+            </div>
         </div>
 
         <script>
@@ -132,5 +145,21 @@
                 });
             }
         </script>
+
+        <div>
+            <br />
+            <br />
+            <hr />
+            &nbsp; &nbsp; &nbsp;
+            <small>
+                References:
+                <a
+                    href="https://www.nhs.uk/live-well/alcohol-support/calculating-alcohol-units/"
+                    target="ref"
+                    >Alcohol Units</a
+                >
+                <a href="https://www.bbc.com/news/uk-35255384" target="ref">BBC Article</a>
+            </small>
+        </div>
     </body>
 </html>

@@ -1,5 +1,5 @@
 function resetUnits() {
-    unitsLeft = weeklyUnits;
+    let unitsLeft = weeklyUnits;
     $("#unitsLeft").val(unitsLeft);
     document.cookie = "unitsLeft=" + unitsLeft;
 }
@@ -12,14 +12,10 @@ function takeUnits(unitsTaken) {
 }
 
 function restoreUnits() {
-    let unitsLeft = weeklyUnits;
-    let restoredVal = document.cookie.replace(
+    let unitsleft = document.cookie.replace(
         /(?:(?:^|.*;\s*)unitsLeft\s*\=\s*([^;]*).*$)|^.*$/,
         "$1"
     );
-    //if (restoredVal >= 0 && restoredVal <= weeklyUnits) {
-    unitsLeft = restoredVal;
-    //}
     $("#unitsLeft").val(unitsLeft);
     return unitsLeft;
 }
