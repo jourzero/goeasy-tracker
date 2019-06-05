@@ -11,14 +11,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script src="scripts/goeasy.js"></script>
         <script src="scripts/jquery-3.4.1.min.js"></script>
-        <script>
-            var weeklyUnits = 14;
-            var unitsLeft = restoreUnits();
-        </script>
     </head>
-    <body>
-        <h3 class="header">Go Easy!</h3>
+    <body onload="restoreUnits()">
         <div id="container">
+            <div class="header"><h4 class="header">Go Easy!</h4></div>
             <style scoped>
                 .button-secondary {
                     color: white;
@@ -26,8 +22,17 @@
                     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
                 }
 
+                .button-scotch {
+                    color: white;
+                    background: #d09000;
+                }
+
                 .button-beer {
-                    background: #ffbf00;
+                    background: #d0a000;
+                }
+
+                .button-ltbeer {
+                    background: #ffbe00;
                 }
 
                 .button-secondary {
@@ -35,7 +40,8 @@
                 }
 
                 .button-wine {
-                    background: yellow;
+                    color: white;
+                    background: #922f37;
                 }
             </style>
             <div class="pure-g">
@@ -59,7 +65,7 @@
                 <div class="pure-u-1-3">&nbsp;</div>
                 <div class="pure-u-1-3"><label for="Shot">Scotch, Spririts</label></div>
                 <div class="pure-u-1-3">
-                    <button type="submit" class="button-wine pure-button" onclick="takeUnits(1)">
+                    <button type="submit" class="button-scotch pure-button" onclick="takeUnits(1)">
                         Single 40%</button
                     >(25ml/1u)
                 </div>
@@ -99,19 +105,19 @@
                 <div class="pure-u-1-1">&nbsp;</div>
                 <div class="pure-u-2-3">&nbsp;</div>
                 <div class="pure-u-1-3">
-                    <button type="submit" class="pure-button button-beer" onclick="takeUnits(2)">
-                        Pint 3.6%
+                    <button type="submit" class="pure-button button-beer" onclick="takeUnits(3)">
+                        Pint 5.2%
                     </button>
-                    (500ml,2u)
+                    (500ml,3u)
                 </div>
 
                 <div class="pure-u-1-1">&nbsp;</div>
                 <div class="pure-u-2-3">&nbsp;</div>
                 <div class="pure-u-1-3">
-                    <button type="submit" class="pure-button button-beer" onclick="takeUnits(3)">
-                        Pint 5.2%
+                    <button type="submit" class="pure-button button-ltbeer" onclick="takeUnits(2)">
+                        Pint 3.6%
                     </button>
-                    (500ml,3u)
+                    (500ml,2u)
                 </div>
 
                 <div class="pure-u-1-1">&nbsp;</div>
@@ -131,35 +137,33 @@
                     />
                 </div>
             </div>
-        </div>
-
-        <script>
-            if ("serviceWorker" in navigator) {
-                navigator.serviceWorker.register("sw.js").then(function(registration) {
-                    console.log("Service Worker Registered");
-                });
-
-                navigator.serviceWorker.ready.then(function(registration) {
-                    console.log("Service Worker Ready");
-                    restoreUnits();
-                });
-            }
-        </script>
-
-        <div>
-            <br />
-            <br />
-            <hr />
-            &nbsp; &nbsp; &nbsp;
-            <small>
-                References:
-                <a
-                    href="https://www.nhs.uk/live-well/alcohol-support/calculating-alcohol-units/"
-                    target="ref"
-                    >Alcohol Units</a
-                >
-                <a href="https://www.bbc.com/news/uk-35255384" target="ref">BBC Article</a>
-            </small>
+            <div class="pure-u-1-1">
+                <br />
+                <hr />
+                &nbsp; &nbsp; &nbsp;
+                <small>
+                    References:
+                    <a
+                        href="https://www.nhs.uk/live-well/alcohol-support/calculating-alcohol-units/"
+                        target="ref"
+                        >Alcohol Units</a
+                    >
+                    <a href="https://www.bbc.com/news/uk-35255384" target="ref">BBC Article</a>
+                </small>
+            </div>
         </div>
     </body>
+
+    <script>
+        if ("serviceWorker" in navigator) {
+            navigator.serviceWorker.register("sw.js").then(function(registration) {
+                console.log("Service Worker Registered");
+            });
+
+            navigator.serviceWorker.ready.then(function(registration) {
+                console.log("Service Worker Ready");
+                restoreUnits();
+            });
+        }
+    </script>
 </html>
