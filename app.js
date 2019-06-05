@@ -3,8 +3,7 @@ const path = require("path");
 const favicon = require("serve-favicon");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-const indexEN = require("./routes/indexEN");
-const indexFR = require("./routes/indexFR");
+const index = require("./routes/index");
 const users = require("./routes/users");
 const logger = require("./lib/appLogger.js");
 const reqLogger = require("./lib/reqLogger.js");
@@ -22,9 +21,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", indexEN);
-app.use("/en", indexEN);
-app.use("/fr", indexFR);
+app.use("/", index);
 //app.use("/users", users);
 
 // catch 404 and forward to error handler
