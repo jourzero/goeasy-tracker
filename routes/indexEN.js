@@ -3,7 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get("/", function(req, res, next) {
-    res.render("index", {title: "Go Easy! Tracker"});
+    res.render("indexEN", {title: "Go Easy! Tracker"});
 });
 
 module.exports = router;
