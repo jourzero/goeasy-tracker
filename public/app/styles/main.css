@@ -45,3 +45,41 @@ h2 {
     background: #fff;
     letter-spacing: 0.05em;
 }
+
+.c1 {
+    width: 100px;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding: 1px;
+}
+.c2 {
+    width: 160px;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding: 1px;
+}
+.c3 {
+    width: 120px;
+    padding-left: 1px;
+    padding-right: 1px;
+    padding: 1px;
+}
+
+.refs {
+    width: 80%;
+    background: #eee;
+    text-align: center;
+}
+
+#customUnits,
+#inStrength,
+#inVolume {
+    padding: 1px;
+    padding-left: 1px;
+    padding-right: 1px;
+    text-indent: 2px;
+}
+
+small {
+    color: #888;
+}

@@ -8,148 +8,236 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="styles/main.css" />
         <link rel="stylesheet" href="styles/pure-release-1.0.0/pure-min.css" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script src="scripts/goeasy.js"></script>
         <script src="scripts/jquery-3.4.1.min.js"></script>
     </head>
-    <body onload="restoreUnits()">
+    <body onload="restoreUnits(); restoreCustoms();">
         <div id="container">
-            <style scoped>
+            <style>
                 .button-secondary {
                     color: white;
                     border-radius: 4px;
                     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+                    width: 100px;
                 }
 
                 .button-scotch {
                     color: white;
                     background: #d09000;
+                    width: 100px;
                 }
 
                 .button-beer {
                     background: #d0a000;
+                    width: 100px;
                 }
 
                 .button-ltbeer {
                     background: #ffbe00;
+                    width: 100px;
                 }
 
                 .button-secondary {
                     background: rgb(66, 184, 221); /* this is a light blue */
+                    width: 100px;
                 }
 
                 .button-wine {
                     color: white;
                     background: #922f37;
+                    width: 100px;
                 }
             </style>
-            <div class="pure-g">
-                <div class="pure-u-1-3">&nbsp;</div>
-                <div class="pure-u-1-3">
-                    <label for="Reset">On Monday</label>
-                </div>
-                <div class="pure-u-1-3">
-                    <button
-                        type="submit"
-                        class="button-xsmall pure-button button-secondary"
-                        onclick="resetUnits()"
-                    >
-                        Reset
-                    </button>
-                </div>
+            <form class="pure-form">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="c1">
+                                On Monday
+                            </td>
+                            <td class="c2"></td>
+                            <td class="c3">
+                                <button
+                                    type="submit"
+                                    class="button-xsmall pure-button button-secondary"
+                                    onclick="resetUnits();"
+                                >
+                                    Reset
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="c1">
+                                Scotch
+                            </td>
+                            <td class="c2">
+                                <small>40% x 25ml = 1u</small>
+                            </td>
+                            <td class="c3">
+                                <button
+                                    type="submit"
+                                    class="button-scotch pure-button"
+                                    onclick="takeUnits(1)"
+                                >
+                                    Single
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="c1">
+                                Wine Glass
+                            </td>
+                            <td class="c2">
+                                <small>12% x 125ml = 1.5u</small>
+                            </td>
+                            <td class="c3">
+                                <button
+                                    type="submit"
+                                    class="button-wine pure-button"
+                                    onclick="takeUnits(1.5)"
+                                >
+                                    Small
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="c1"></td>
+                            <td class="c2">
+                                <small>12% x 175ml = 2.1u</small>
+                            </td>
+                            <td class="c3">
+                                <button
+                                    type="submit"
+                                    class="button-wine pure-button"
+                                    onclick="takeUnits(2.1)"
+                                >
+                                    Normal
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="c1">
+                                Beer
+                            </td>
+                            <td class="c2">
+                                <small>5% x 330ml = 1.6u</small>
+                            </td>
+                            <td class="c3">
+                                <button
+                                    type="submit"
+                                    class="pure-button button-beer"
+                                    onclick="takeUnits(1.6)"
+                                >
+                                    Bottle
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="c1"></td>
+                            <td class="c2">
+                                <small>5% x .5L = 2.5u</small>
+                            </td>
+                            <td class="c3">
+                                <button
+                                    type="submit"
+                                    class="pure-button button-beer"
+                                    onclick="takeUnits(2.5)"
+                                >
+                                    Pint
+                                </button>
+                            </td>
+                        </tr>
 
-                <div class="pure-u-1-1">&nbsp;</div>
-                <div class="pure-u-1-1">&nbsp;</div>
+                        <tr>
+                            <td class="c1">
+                                Custom
+                            </td>
+                            <td class="c2">
+                                <small>
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    placeholder="%"
+                                                    id="inStrength"
+                                                    size="3"
+                                                    class="tightInput"
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    placeholder="ml"
+                                                    id="inVolume"
+                                                    size="3"
+                                                    class="tightInput"
+                                                />
+                                            </td>
+                                            <td>
+                                                <input
+                                                    type="text"
+                                                    placeholder="Units"
+                                                    readonly
+                                                    id="customUnits"
+                                                    size="3"
+                                                    class="tightInput"
+                                                />
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </small>
+                            </td>
+                            <td class="c3">
+                                <button
+                                    type="submit"
+                                    class="pure-button button-ltbeer"
+                                    onclick="takeUnits(getCustomUnits())"
+                                >
+                                    Drink
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="c1">
+                                Units Left
+                            </td>
+                            <td class="c2"></td>
+                            <td class="c3">
+                                <input
+                                    type="text"
+                                    class="pure-input-rounded"
+                                    placeholder="Units"
+                                    id="unitsLeft"
+                                    size="5"
+                                    readonly
+                                />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
 
-                <div class="pure-u-1-3">&nbsp;</div>
-                <div class="pure-u-1-3"><label for="Shot">Scotch, Spririts</label></div>
-                <div class="pure-u-1-3">
-                    <button type="submit" class="button-scotch pure-button" onclick="takeUnits(1)">
-                        Single 40%</button
-                    >(25ml/1u)
-                </div>
-
-                <div class="pure-u-1-1">&nbsp;</div>
-
-                <div class="pure-u-1-3">&nbsp;</div>
-                <div class="pure-u-1-3"><label for="Wine">Wine Glass</label></div>
-                <div class="pure-u-1-3">
-                    <button type="submit" class="button-wine pure-button" onclick="takeUnits(1.5)">
-                        Small 12%</button
-                    >(125ml/1.5u)
-                </div>
-
-                <div class="pure-u-1-1">&nbsp;</div>
-
-                <div class="pure-u-2-3">&nbsp;</div>
-                <div class="pure-u-1-3">
-                    <button type="submit" class="button-wine pure-button" onclick="takeUnits(2.1)">
-                        Normal 12%</button
-                    >(175ml/2.1u)
-                </div>
-
-                <div class="pure-u-1-1">&nbsp;</div>
-
-                <div class="pure-u-1-3">&nbsp;</div>
-                <div class="pure-u-1-3">
-                    <label for="Bottles">Brewsky</label>
-                </div>
-                <div class="pure-u-1-3">
-                    <button type="submit" class="pure-button button-beer" onclick="takeUnits(1.7)">
-                        Bottle 5%
-                    </button>
-                    (330ml/1.7u)
-                </div>
-
-                <div class="pure-u-1-1">&nbsp;</div>
-                <div class="pure-u-2-3">&nbsp;</div>
-                <div class="pure-u-1-3">
-                    <button type="submit" class="pure-button button-beer" onclick="takeUnits(3)">
-                        Pint 5.2%
-                    </button>
-                    (500ml,3u)
-                </div>
-
-                <div class="pure-u-1-1">&nbsp;</div>
-                <div class="pure-u-2-3">&nbsp;</div>
-                <div class="pure-u-1-3">
-                    <button type="submit" class="pure-button button-ltbeer" onclick="takeUnits(2)">
-                        Pint 3.6%
-                    </button>
-                    (500ml,2u)
-                </div>
-
-                <div class="pure-u-1-1">&nbsp;</div>
-                <div class="pure-u-1-1">&nbsp;</div>
-
-                <div class="pure-u-1-3">&nbsp;</div>
-                <div class="pure-u-1-3">
-                    <label for="UnitsLeft">Units Left</label>
-                </div>
-                <div class="pure-u-1-3">
-                    <input
-                        type="text"
-                        class="pure-input-rounded"
-                        placeholder="Units Left (click Reset)"
-                        id="unitsLeft"
-                        readonly
-                    />
-                </div>
-                <div class="pure-u-1-3">&nbsp;</div>
-                <div class="pure-u-2-3">
-                    <br />
-                    <hr />
-                    <small>
-                        Ref.:
-                        <a
-                            href="https://www.nhs.uk/live-well/alcohol-support/calculating-alcohol-units/"
-                            target="ref"
-                            >Alcohol Units</a
-                        >
-                        <a href="https://www.bbc.com/news/uk-35255384" target="ref">BBC Article</a>
-                    </small>
-                </div>
-            </div>
+            <table class="refs">
+                <tr>
+                    <td>
+                        &nbsp;
+                        <small>
+                            Ref.:
+                            <a
+                                href="https://www.nhs.uk/live-well/alcohol-support/calculating-alcohol-units/"
+                                target="ref"
+                                >Alcohol Units</a
+                            >
+                            |
+                            <a href="https://www.bbc.com/news/uk-35255384" target="ref"
+                                >Recommended Limits.</a
+                            >
+                        </small>
+                        &nbsp;
+                    </td>
+                </tr>
+            </table>
         </div>
     </body>
 
@@ -162,7 +250,14 @@
             navigator.serviceWorker.ready.then(function(registration) {
                 console.log("Service Worker Ready");
                 restoreUnits();
+                restoreCustoms();
             });
         }
+        $("#inStrength").blur(function() {
+            getCustomUnits();
+        });
+        $("#inVolume").blur(function() {
+            getCustomUnits();
+        });
     </script>
 </html>
