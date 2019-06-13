@@ -15,9 +15,9 @@ function resetUnits() {
 
 function takeUnits(unitsTaken, drinkType) {
     let ts = new Date();
-    logger(ts.toLocaleString() + ": Took " + unitsTaken + " " + drinkType + " unit(s)");
+    logger(ts.toLocaleString() + ": Took " + unitsTaken + " " + drinkType + " un.");
     let unitsLeft = $("#unitsLeft").val();
-    unitsLeft -= unitsTaken;
+    unitsLeft -= Number(unitsTaken).toPrecision(2);
     $("#unitsLeft").val(unitsLeft);
     localStorage.setItem("unitsLeft", unitsLeft);
     saveCustoms();
