@@ -1,13 +1,21 @@
 let weeklyUnits = 14;
 
 function resetUnits() {
+    let ts = new Date();
     let unitsLeft = weeklyUnits;
     $("#unitsLeft").val(unitsLeft);
     localStorage.setItem("unitsLeft", unitsLeft);
+    $("#inVolume").val(localStorage.getItem("inVolume"));
+    $("#inStrength").val(localStorage.getItem("inStrength"));
+    $("#customUnits").val(getCustomUnits());
+    localStorage.setItem("log", "");
+    logger(ts.toLocaleString() + ": Reset unit(s)");
     return unitsLeft;
 }
 
-function takeUnits(unitsTaken) {
+function takeUnits(unitsTaken, drinkType) {
+    let ts = new Date();
+    logger(ts.toLocaleString() + ": Took " + unitsTaken + " " + drinkType + " unit(s)");
     let unitsLeft = $("#unitsLeft").val();
     unitsLeft -= unitsTaken;
     $("#unitsLeft").val(unitsLeft);
@@ -38,5 +46,18 @@ function getCustomUnits() {
     let inVolume = $("#inVolume").val();
     let customUnits = Number((inStrength * inVolume) / 1000).toPrecision(2);
     $("#customUnits").val(customUnits);
+    saveCustoms();
     return customUnits;
+}
+
+function logger(input) {
+    let entries = localStorage.getItem("log");
+    if (entries === null) localStorage.setItem("log", input);
+    else localStorage.setItem("log", entries + "\n" + input);
+    console.log(input);
+}
+
+function showLog() {
+    let entries = localStorage.getItem("log");
+    alert("Log Entries:\n" + entries);
 }

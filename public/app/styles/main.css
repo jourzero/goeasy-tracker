@@ -19,6 +19,8 @@ body {
 
 #container {
     height: 100%;
+    max-height: 500px;
+    max-width: 350px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -37,7 +39,7 @@ body {
 .header,
 h2 {
     font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    max-width: 768px;
+    /* max-width: 768px; */
     margin: 0 auto;
     padding: 1em;
     text-align: center;
@@ -47,22 +49,29 @@ h2 {
 }
 
 .c1 {
-    width: 100px;
+    width: 10px;
     padding-left: 1px;
     padding-right: 1px;
     padding: 1px;
+    height: 55px;
+    vertical-align: middle;
 }
 .c2 {
-    width: 160px;
+    width: 200px;
     padding-left: 1px;
     padding-right: 1px;
     padding: 1px;
+    height: 55px;
+    text-align: right;
+    vertical-align: middle;
 }
 .c3 {
     width: 120px;
     padding-left: 1px;
     padding-right: 1px;
     padding: 1px;
+    height: 55px;
+    vertical-align: middle;
 }
 
 .refs {
@@ -80,6 +89,21 @@ h2 {
     text-indent: 2px;
 }
 
-small {
+.details {
     color: #888;
+    text-align: right;
+}
+
+button {
+    font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 18px;
+    height: 50px;
+}
+
+input {
+    background-color: #eee;
+}
+
+input[readonly] {
+    background-color: #ccc;
 }

@@ -5,6 +5,8 @@ self.addEventListener("install", e => {
         caches.open(cacheName).then(cache => {
             return cache
                 .addAll([
+                    `/favicon.ico`,
+                    `/app`,
                     `index.html`,
                     `sw.js`,
                     `styles/main.css`,
